@@ -1,0 +1,11 @@
+# Working backups and snapshots
+_clean/
+_css_blocks/
+_source/
+_text_snapshots/
+
+# Legacy monolithic base64 files (now superseded by modular index.html + extracted images/)
+portfolio-home.html
+smart-service-tracker-case-study.html
+phishguard-case-study.html
+leadership-showcase.html

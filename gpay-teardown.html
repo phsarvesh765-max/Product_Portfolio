@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Google Pay &amp; UPI Security Teardown | Pay-Pause PRD | Sarvesh Gowda P H</title>
+<meta name="description" content="End-to-End UPI Security Architecture Teardown & Proposed Pay-Pause Scam Protection PRD for Google Pay by Sarvesh Gowda P H.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Google Pay &amp; UPI Security Teardown | Pay-Pause PRD | Sarvesh Gowda P H">
+<meta property="og:description" content="End-to-End UPI Security Architecture Teardown & Proposed Pay-Pause Scam Protection PRD for Google Pay by Sarvesh Gowda P H.">
+<meta property="og:url" content="https://phsarvesh765-max.github.io/Product_Portfolio/gpay-teardown.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="progress"></div>
+<div class="barwrap"><div class="w bar"><a class="name" href="index.html">Sarvesh Gowda P H</a><nav class="nav" aria-label="Primary"><a href="index.html">Back to portfolio</a><button class="tbtn" type="button" aria-label="Switch light or dark theme">Theme</button></nav></div></div>
+<main class="w">
+<header class="hero">
+  <div>
+    <h1>Google Pay: UPI Security Teardown &amp; "Pay-Pause" PRD</h1>
+    <p class="byline">BCA Graduate &amp; Full-Stack Builder transitioning into Product Management.</p>
+    <p class="sub">Product Teardown &amp; PRD: Mitigating social engineering scams in real-time push payments without degrading transaction velocity.</p>
+  </div>
+  <div class="meta">
+    <p><b>Target Platform:</b> Google Pay (Android, India) &amp; UPI Settlement Rails</p>
+    <p><b>Focus Area:</b> Fintech Security, Social Engineering Defense &amp; "Friction as a Feature"</p>
+    <p><b>Author:</b> Sarvesh Gowda P H (Aspiring Associate Product Manager)</p>
+    <p><b>Key Concept:</b> On-Device Triad Risk Engine + 15-Second Pattern-Breaking Pre-PIN Modal</p>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="rail" aria-label="Sections">
+  <a href="#s1">UPI Security Architecture</a>
+  <a href="#s2">The Social Engineering Paradox</a>
+  <a href="#s3">Market Gap &amp; The Risk Triad</a>
+  <a href="#s4">Pay-Pause Architecture &amp; UX</a>
+  <a href="#s5">Requirements Matrix (PRD)</a>
+  <a href="#s6">Metrics &amp; Guardrails</a>
+  <a href="#s7">Privacy &amp; Accessibility</a>
+  <a href="#s8">A/B Test &amp; Rollout Decision Tree</a>
+  <a href="#s9">Strategic Takeaways as an APM</a>
+</nav>
+
+<div class="content">
+
+  <section id="s1">
+    <h2>1. Executive Summary &amp; Architectural Security Layers</h2>
+    <p>India’s Unified Payments Interface (UPI) processes over <b>13,000 crore annual transactions</b>. Its explosive adoption relies on sub-3-second real-time push payments. However, because settlement is instantaneous and irreversible, fraudsters have shifted away from technical breaches toward <b>social engineering</b>—psychologically manipulating victims via phone calls to authorize payments themselves.</p>
+    <p>This study combines an architectural security teardown of UPI with a comprehensive Product Requirements Document (PRD) for <b>Pay-Pause</b>: an intelligent, risk-scored pre-PIN intervention for Google Pay.</p>
+
+    <h3>UPI's Multi-Tiered Security Model</h3>
+    <div class="three">
+      <div>
+        <h3>Layer 1: Device Binding</h3>
+        <p><b>"Something You Have":</b> Outbound encrypted SMS cryptographically links the physical SIM card (ICCID/IMSI) to the registered bank account. Completely eliminates web-based credential hijacking.</p>
+      </div>
+      <div>
+        <h3>Layer 2: NPCI Common Library</h3>
+        <p><b>"Something You Know":</b> Google Pay never sees or logs the UPI PIN. The PIN pad is an isolated secure sandbox rendered by NPCI, encrypted with the remitter bank's public key.</p>
+      </div>
+      <div>
+        <h3>Layer 3: Risk Scoring</h3>
+        <p><b>Behavioral Telemetry:</b> Sub-second ML models detect screen-sharing apps (AnyDesk, TeamViewer), unusual velocity spikes, and high-risk beneficiary VPAs before routing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="s2">
+    <h2>2. The Core Paradox: Social Engineering &amp; Failure Points</h2>
+    <p>Despite military-grade cryptography and device binding, traditional cybersecurity collapses when a user is <b>manipulated into entering their own PIN</b> under psychological distress:</p>
+    <ul>
+      <li><b>The Coercion Vector:</b> Fraudsters systematically manufacture panic over live phone calls (fake police digital arrests, courier parcel drugs, immediate electricity cutoffs, or customer care refunds).</li>
+      <li><b>The Speed Trap:</b> In genuine payments, zero friction is an asset. Under phone coercion, zero friction is a liability because victims rush through PIN entry before their rational faculties can intervene.</li>
+      <li><b>The Fraud Scale (RBI Data):</b> Reported UPI fraud rose to <b>13.42 lakh incidents (₹1,087 crore) in FY2023–24</b>. High-value transactions above ₹10,000 account for approximately <b>98.5% of total fraud value</b>.</li>
+    </ul>
+  </section>
+
+  <section id="s3">
+    <h2>3. Market Gap Analysis &amp; The Risk Triad</h2>
+    <p>Existing safety interventions either fire on narrow hardware signals or propose clumsy blanket delays that damage UPI's core value proposition:</p>
+
+    <div class="scroll" role="region" aria-label="Market Gap Analysis Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Protection Layer</th><th>Operating Mechanism</th><th>Critical Gaps &amp; Limitations</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Android In-Call Protection</b></td>
+            <td>Detects financial apps opened during active screen sharing on calls; offers 30s pause.</td>
+            <td>Requires active screen share; completely blind to voice-only psychological coercion calls.</td>
+          </tr>
+          <tr>
+            <td><b>Pixel Call Scam Detection</b></td>
+            <td>On-device Gemini Nano analyzes voice audio in Hindi/English for scam phrases.</td>
+            <td>Restricted to Pixel 9+ devices (&lt;1% of India’s active smartphone base).</td>
+          </tr>
+          <tr>
+            <td><b>Google Pay Security Alerts</b></td>
+            <td>Delivers dynamic warning banners for unverified accounts (&gt;1M warnings weekly).</td>
+            <td>High false-positive rate causes alert fatigue; lacks live phone call context integration.</td>
+          </tr>
+          <tr>
+            <td><b>RBI April 2026 Paper Proposal</b></td>
+            <td>Proposes mandatory 1-hour delay for all first-time transfers &gt;₹10,000.</td>
+            <td>Blanket delays destroy UPI’s real-time payment utility. Industry demands dynamic risk scoring.</td>
+          </tr>
+          <tr>
+            <td><b>Pay-Pause (Our Proposal)</b></td>
+            <td>Evaluates the combined <b>Risk Triad</b> on-device before initializing the NPCI PIN pad.</td>
+            <td class="shipped">Fires only when multiple risk signals converge; zero friction for standard payments.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="persona">
+      <h3>The Unaddressed Gap: The Real-Time Risk Triad</h3>
+      <p>No existing production system evaluates the convergence of these three signals in real time without recording audio:</p>
+      <p style="font-size:1.1rem; font-weight:700; color:var(--accent); text-align:center; padding:10px 0;">
+        [Active Voice Call with Unknown Number] + [First-Time P2P Payee] + [High Transaction Value &ge; ₹10,000]
+      </p>
+    </div>
+  </section>
+
+  <section id="s4">
+    <h2>4. Proposed Solution: The Pay-Pause Architecture &amp; Tiered UX</h2>
+    <p>Pay-Pause runs client-side on the <b>Pre-PIN Payment Review Screen</b> (after tapping <em>Proceed to Pay</em>, immediately before invoking the NPCI Common Library SDK):</p>
+
+    <div class="scroll" role="region" aria-label="Tiered UX Matrix Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Risk Level</th><th>Trigger Criteria</th><th>UX Intervention &amp; Friction Design</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Tier 0: Low Risk</b></td>
+            <td>Known payee in contact book OR no active call OR transaction value &lt; ₹2,000.</td>
+            <td><b>Standard Flow:</b> Zero added friction. Proceeds instantly to the NPCI PIN pad.</td>
+          </tr>
+          <tr>
+            <td><b>Tier 1: Medium Risk</b></td>
+            <td>First-time payee + amount &ge; ₹10,000 OR active unknown call + amount ₹2,000–₹9,999.</td>
+            <td><b>Inline Warning Banner:</b> Amber banner stating <em>"On a call with an unknown number? Scammers often rush payments."</em> User taps "I trust this payee" to proceed.</td>
+          </tr>
+          <tr>
+            <td><b>Tier 2: High Risk</b></td>
+            <td><b>Triad Alignment:</b> Active unknown call + First-time P2P payee + Amount &ge; ₹10,000.</td>
+            <td><b>15-Second Pattern-Breaking Modal:</b> Full-screen bottom sheet with a 15-second countdown timer ring.<br>
+            • Headline: <em>"Stop and check. Banks, police, and customer support will NEVER ask you to send money over a phone call."</em><br>
+            • Primary Action (Red CTA): <b>End Call &amp; Cancel Payment</b>.<br>
+            • Secondary Action (Enabled after 15s): Proceed to PIN or Call Trusted Contact.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s5">
+    <h2>5. Product Requirements Matrix (PRD)</h2>
+    <div class="scroll" role="region" aria-label="PRD Requirements Matrix Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Priority</th><th>Feature Requirement</th><th>Acceptance Criteria</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>REQ-1</td><td><b>P0</b></td><td>On-Device Call State Signal</td><td>Detects active cellular/VoIP call and checks local contact book matching strictly on-device without audio recording permissions. Latency must be &lt; 100ms (p99).</td></tr>
+          <tr><td>REQ-2</td><td><b>P0</b></td><td>NPCI Common Library Gate</td><td>For Tier 2 events, the application prevents invocation of the NPCI PIN SDK until the 15-second timer expires and explicit confirmation is made.</td></tr>
+          <tr><td>REQ-3</td><td><b>P0</b></td><td>One-Tap Call Termination</td><td>Tapping <em>"End Call &amp; Cancel Payment"</em> cancels transaction intent and drops the active phone call immediately.</td></tr>
+          <tr><td>REQ-4</td><td><b>P0</b></td><td>Permission Degradation Fallback</td><td>If contact/phone permissions are withheld, the engine falls back to evaluating payee novelty + rapid clipboard paste + transaction value.</td></tr>
+          <tr><td>REQ-5</td><td><b>P1</b></td><td>Post-Call Cooldown Window</td><td>If an unknown call ends, Tier 2 protection remains active for <b>3 minutes post-hangup</b> to prevent scammers from instructing victims to <em>"hang up and pay quickly."</em></td></tr>
+          <tr><td>REQ-6</td><td><b>P1</b></td><td>Multilingual Voice Read-Out</td><td>Tier 2 modals feature an audio icon reading warnings in the active app language (Hindi, English, Kannada, Tamil, Telugu, Marathi, Bengali).</td></tr>
+          <tr><td>REQ-7</td><td><b>P1</b></td><td>Verified Merchant (P2M) Exemption</td><td>Payments to verified merchant QR codes or registered payment gateways bypass Tier 2 unless flagged for mule activity.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s6">
+    <h2>6. Success Metrics &amp; Protective Guardrails</h2>
+    <div class="scroll" role="region" aria-label="Metrics Hierarchy Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Metric Category</th><th>Metric Name</th><th>Target / Tolerance</th><th>Strategic Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>North Star Metric</b></td>
+            <td><b>Fraud Value Reduction Rate (%)</b></td>
+            <td class="shipped"><b>&ge; 25% Reduction</b></td>
+            <td>Measures decrease in reported coerced push-payment fraud per 10k transactions in treatment vs control.</td>
+          </tr>
+          <tr>
+            <td>Secondary Metric</td>
+            <td>Intervention Abandonment Rate</td>
+            <td>Baseline Tracking</td>
+            <td>Percentage of Tier 2 interventions where users choose to cancel payment or end call.</td>
+          </tr>
+          <tr>
+            <td><b>Guardrail Metric 1</b></td>
+            <td><b>Genuine Payment Completion Impact</b></td>
+            <td class="cut"><b>&le; 1.5% Drop</b></td>
+            <td>Ensures legitimate users are not blocked from completing genuine transfers within 24 hours.</td>
+          </tr>
+          <tr>
+            <td><b>Guardrail Metric 2</b></td>
+            <td><b>Cross-App Churn Rate</b></td>
+            <td class="cut"><b>&le; 3.0% Churn</b></td>
+            <td>Monitors users who abandon GPay upon seeing a prompt and complete the payment on PhonePe or Paytm.</td>
+          </tr>
+          <tr>
+            <td><b>Guardrail Metric 3</b></td>
+            <td><b>Client Evaluation Latency</b></td>
+            <td><b>&lt; 150ms at p99</b></td>
+            <td>Keeps pre-PIN evaluation instant and imperceptible to genuine payers.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s7">
+    <h2>7. Privacy, Socioeconomic Fairness &amp; Accessibility</h2>
+    <ul>
+      <li><b>Privacy-by-Design:</b> Contact matching and call-state telemetry execute 100% on-device. Google servers receive only an anonymized binary trigger flag (<code>is_unknown_call = true/false</code>). Contact books, phone numbers, and audio are never transmitted off-device.</li>
+      <li><b>Socioeconomic Fairness:</b> High-frequency P2P transactors (such as local traders and gig workers) receive dynamic risk adjustments after initial successful transactions to prevent recurring friction.</li>
+      <li><b>Accessibility (WCAG AA):</b> Plain-language copy avoiding financial legalese (e.g., using <em>"fake caller"</em> instead of <em>"social engineering attack"</em>), auto-focused TalkBack screen reader support, and one-tap voice read-outs for low-literacy users.</li>
+    </ul>
+  </section>
+
+  <section id="s8">
+    <h2>8. Experimentation Plan &amp; Strategic Decision Tree</h2>
+    <p>We propose a randomized, stratified <b>2% A/B experiment</b> on Android Google Pay in India across metro, Tier-2, and rural user demographics:</p>
+    <ul>
+      <li><b>Phase 0 (Shadow Logging — 7 Days):</b> Run signal detection silently in the background to verify trigger sparsity (&lt;0.8% of user sessions) and confirm app performance stability.</li>
+      <li><b>Phase 1 (Active A/B Test — 4 Weeks):</b> 1% Control (existing warnings) vs 1% Treatment (Pay-Pause Tier 1 &amp; Tier 2).</li>
+      <li><b>Phase 2 (Observation — 14 Days):</b> Post-test window to capture delayed bank chargebacks and cybercrime portal filings.</li>
+    </ul>
+
+    <div class="persona">
+      <h3>Strategic Rollout Decision Tree</h3>
+      <ol>
+        <li><b>Was Fraud Value reduced by &ge; 20%?</b>
+          <ul>
+            <li><em>NO:</em> Rollback to Phase 0 and re-evaluate heuristic weights.</li>
+            <li><em>YES:</em> Proceed to Guardrail Check.</li>
+          </ul>
+        </li>
+        <li><b>Is Genuine Payment Drop-off &le; 1.5% and Cross-App Churn &le; 3%?</b>
+          <ul>
+            <li><em>YES:</em> <b>Greenlight</b> — Scale rollout to 10% and prepare pan-India general availability.</li>
+            <li><em>NO:</em> <b>Iterate Thresholds</b> — Raise amount threshold to ₹25,000 or shorten modal lockout from 15s to 10s.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="s9">
+    <h2>9. Key PM Lessons as an Aspiring APM</h2>
+    <div class="three">
+      <div>
+        <h3>Friction as a Feature</h3>
+        <p>In instant push payments, zero friction is an asset for genuine users but a catastrophic vulnerability during live phone manipulation. Thoughtful friction saves lives and livelihoods.</p>
+      </div>
+      <div>
+        <h3>Precision Over Blanket Mandates</h3>
+        <p>While regulators propose blunt 1-hour blanket delays, rigorous product managers identify the specific risk triad to protect vulnerable users while preserving UPI's speed.</p>
+      </div>
+      <div>
+        <h3>Adversarial Design</h3>
+        <p>Good product design anticipates user needs; exceptional security product design anticipates the attacker's counter-strategy (e.g., cooldown windows against scammer coaching).</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a class="prev" href="startup-techh.html"><small>Previous project</small><b>START_UP (@startup.techh)</b></a>
+    <a class="next" href="leadership.html"><small>Next showcase</small><b>Leadership &amp; Communication</b></a>
+  </nav>
+  <p class="back"><a href="index.html">Back to portfolio</a></p>
+
+</div>
+</div>
+</main>
+<dialog id="lb" aria-label="Enlarged screenshot"><button type="button">Close</button><img alt=""></dialog>
+<script src="site.js"></script>
+</body>
+</html>

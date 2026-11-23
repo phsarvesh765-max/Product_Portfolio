@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Hire AI | Product Case Study | Sarvesh Gowda P H</title>
+<meta name="description" content="Smart Hire AI: Comprehensive Campus Placement Readiness Platform built and validated with 21 students, 3 faculty, and 1 HR professional.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Smart Hire AI | Product Case Study | Sarvesh Gowda P H">
+<meta property="og:description" content="Smart Hire AI: Comprehensive Campus Placement Readiness Platform built and validated with 21 students, 3 faculty, and 1 HR professional.">
+<meta property="og:url" content="https://phsarvesh765-max.github.io/Product_Portfolio/smart-hire-ai.html">
+<meta property="og:image" content="https://phsarvesh765-max.github.io/Product_Portfolio/images/sh-login.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="progress"></div>
+<div class="barwrap"><div class="w bar"><a class="name" href="index.html">Sarvesh Gowda P H</a><nav class="nav" aria-label="Primary"><a href="index.html">Back to portfolio</a><button class="tbtn" type="button" aria-label="Switch light or dark theme">Theme</button></nav></div></div>
+<main class="w">
+<header class="hero">
+  <div>
+    <h1>Smart Hire AI: Campus Placement Readiness Platform</h1>
+    <p class="byline">BCA Graduate &amp; Full-Stack Builder transitioning into Product Management.</p>
+    <p class="sub">A free AI platform where final-year students practise all 4 campus placement rounds and receive actionable feedback with a weekly roadmap.</p>
+  </div>
+  <div class="meta">
+    <p><b>Role:</b> Solo Product Owner &amp; Developer (Problem Definition, Scoping, Design, Development &amp; Testing)</p>
+    <p><b>Timeline:</b> BCA Final-Year Capstone Project · 2025 – 2026</p>
+    <p><b>Tech Stack:</b> Python, Streamlit, SQLite, NLP, Speech Recognition, Google Gemini API</p>
+    <p><b>Validation:</b> Field-tested with 21 students, 3 lecturers, and 1 HR professional</p>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="rail" aria-label="Sections">
+  <a href="#s1">Problem Discovery</a>
+  <a href="#s2">Users &amp; Positioning</a>
+  <a href="#s3">Competitive Alternatives</a>
+  <a href="#s4">Scope &amp; Trade-Offs</a>
+  <a href="#s5">UX Flow &amp; Screens</a>
+  <a href="#s6">Validation &amp; Early Signals</a>
+  <a href="#s7">Iterations from Feedback</a>
+  <a href="#s8">Metrics &amp; Retention Gap</a>
+  <a href="#s9">AI Quality &amp; Privacy Risks</a>
+  <a href="#s10">Key Lessons as a PM</a>
+</nav>
+
+<div class="content">
+
+  <section id="s1">
+    <h2>1. Executive Summary &amp; Problem Discovery (User Empathy)</h2>
+    <p>In college degree programmes, placement anxiety kicks in heavily by the second year. Students frequently express deep uncertainty regarding aptitude tests, technical coding assessments, domain-specific technical interviews, and HR rounds.</p>
+    <p>While faculty conducted occasional mock interviews, these sessions were severely constrained: they were one-off, time-consuming for professors, and lacked a repeatable mechanism for students to understand their specific weaknesses or know what to practise next.</p>
+    <h3>Core Pain Points Identified</h3>
+    <ol>
+      <li><b>Fragmented Preparation:</b> Students had to use disparate tools for aptitude questions, coding challenges, and mock HR questions.</li>
+      <li><b>No Repeatable Feedback Loop:</b> Students rarely received immediate, structured diagnostics highlighting whether their communication or technical depth failed them.</li>
+      <li><b>Lack of Progress Visibility:</b> Neither students nor placement mentors could see historical improvement across interview attempts.</li>
+    </ol>
+  </section>
+
+  <section id="s2">
+    <h2>2. Users and Product Positioning</h2>
+    <p>A crucial early product decision was deciding what Smart Hire AI is—and what it is <em>not</em>:</p>
+    <div class="personas"><div class="persona">
+      <h3>Primary User: Final-Year Students</h3>
+      <ul>
+        <li><b>Goal:</b> Rehearse end-to-end placement rounds in a low-stakes, repeatable environment anytime without waiting for faculty availability.</li>
+        <li><b>Needs:</b> Realistic questions, instant scoring, plain-English breakdown of mistakes, and a structured study plan for the coming week.</li>
+      </ul>
+    </div>
+    <div class="persona">
+      <h3>Secondary User: Faculty &amp; Placement Mentors</h3>
+      <ul>
+        <li><b>Goal:</b> Gain cohort-level visibility into which placement areas (e.g., coding vs communication) students struggle with the most.</li>
+        <li><b>Needs:</b> Searchable candidate tracking, attempt history, and exportable PDF readiness summaries.</li>
+      </ul>
+    </div></div>
+    <p><b>Positioning Boundary:</b> Smart Hire AI is positioned as a <b>practice and readiness tool for students</b>, not an automated hiring/screening tool. When an HR professional suggested adding proctoring for candidate screening, I deliberately kept it out of scope to focus on student trust.</p>
+  </section>
+
+  <section id="s3">
+    <h2>3. Competitive Analysis &amp; Product Differentiation</h2>
+    <p>Existing platforms each address only a single slice of interview preparation. None offered a unified, zero-cost flow tailored to Indian tier-2/tier-3 college placement patterns:</p>
+    <div class="scroll" role="region" aria-label="Competitive Alternatives Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Capability / Feature</th><th>Google Interview Warmup</th><th>Pramp</th><th>Big Interview</th><th>Smart Hire AI (Our Product)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cost to Student</td><td>Free</td><td>Free</td><td>Paid ($79+/mo)</td><td><b>100% Free</b></td></tr>
+          <tr><td>Format</td><td>Spoken answers + AI insights</td><td>Live peer interview</td><td>Recorded video lessons + practice</td><td><b>Full AI-driven end-to-end flow</b></td></tr>
+          <tr><td>Aptitude Assessment Round</td><td>No</td><td>No</td><td>No</td><td class="shipped">Yes (Full Round)</td></tr>
+          <tr><td>Coding Assessment Round</td><td>No</td><td>Yes (Requires peer match)</td><td>No</td><td class="shipped">Yes (Self-Paced)</td></tr>
+          <tr><td>Resume Parsing &amp; Skill Extraction</td><td>No</td><td>No</td><td>No</td><td class="shipped">Yes (NLP-driven)</td></tr>
+          <tr><td>Personalized Weekly Action Plan</td><td>No</td><td>No</td><td>No</td><td class="shipped">Yes (Roadmap generated)</td></tr>
+          <tr><td>Faculty / Mentor Dashboard</td><td>No</td><td>No</td><td>No</td><td class="shipped">Yes (Tracking included)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><em>Strategic Bet:</em> The goal was not to out-polish Google at voice UX, but to cover the <b>entire 4-round placement path</b> in one accessible tool for students who cannot afford paid coaching.</p>
+  </section>
+
+  <section id="s4">
+    <h2>4. MVP Scope &amp; Deliberate Prioritization Trade-Offs</h2>
+    <p>To deliver a working end-to-end solution solo, I used ruthless prioritization to decide what to build and what to deliberately reject:</p>
+    <div class="scroll" role="region" aria-label="MVP Prioritization Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Feature / Capability</th><th>Decision</th><th>Rationale &amp; Product Trade-Off</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Resume Parsing &amp; NLP Skill Extraction</td><td class="shipped">Shipped (P0)</td><td>Personalizes questions based on student domain and projects.</td></tr>
+          <tr><td>4 Integrated Interview Rounds</td><td class="shipped">Shipped (P0)</td><td>Covers Aptitude, Technical Coding, Technical Interview, and HR.</td></tr>
+          <tr><td>Speech-to-Text &amp; English Communication Eval</td><td class="shipped">Shipped (P0)</td><td>Evaluates spoken clarity and grammar for non-native English speakers.</td></tr>
+          <tr><td>Round-wise Grades &amp; Weekly Roadmap</td><td class="shipped">Shipped (P1)</td><td>Turns raw evaluation scores into actionable next steps.</td></tr>
+          <tr><td>Faculty Dashboard &amp; Report Export</td><td class="shipped">Shipped (P1)</td><td>Provides professors with cohort diagnostics.</td></tr>
+          <tr><td>Camera Proctoring &amp; Eye-Tracking</td><td class="cut">Cut for v1</td><td>Essential for hiring tests, but adds severe friction, privacy concerns, and hardware barriers for practice.</td></tr>
+          <tr><td>Hard Coding Tier (LeetCode Hard)</td><td class="cut">Cut for v1</td><td>Early testing showed 8/21 testers struggled with entry coding; needed to calibrate baseline first.</td></tr>
+          <tr><td>Paid Monetization / Paywalls</td><td class="cut">Cut for v1</td><td>Premature before establishing student retention and efficacy proof.</td></tr>
+          <tr><td>Multi-College Rollout</td><td class="cut">Cut for v1</td><td>Validated at my home institution first before architecting multi-tenant scale.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s5" class="screen">
+    <h2>5. UX Flow &amp; Annotated Screens</h2>
+
+    <h3>Screen 1: Authentication &amp; Candidate Access Intake</h3>
+    <figure>
+      <img src="images/sh-login.png" alt="Smart Hire AI Access Login and Registration Portal" loading="lazy">
+      <figcaption><em>UX Decision:</em> Clean, dark-mode role selection (Applicant vs Evaluator) with streamlined access login, registration, and password recovery modules designed for rapid onboarding.</figcaption>
+    </figure>
+
+    <h3>Screen 2: Round 2 — English &amp; Verbal Communication Assessment</h3>
+    <figure>
+      <img src="images/sh-round2-english.jpg" alt="Round 2 English and Communication assessment interface showing multiple choice questions and progress indicator" loading="lazy">
+      <figcaption><em>UX Decision:</em> Integrated active session navigation on the left rail alongside real-time question progress (e.g., Question 2 of 10) to minimize test anxiety while testing situational literacy and sentence structuring.</figcaption>
+    </figure>
+
+    <h3>Screen 3: Round 3 — Interactive Debugging &amp; Coding Assessment</h3>
+    <figure>
+      <img src="images/sh-round3-coding.jpg" alt="Coding round interface showing sliding window sum calculation debugging problem in Python" loading="lazy">
+      <figcaption><em>UX Decision:</em> Embedded an in-browser code editor with active syntax highlighting and automated unit test execution (e.g., detecting sliding window off-by-one errors) so students practise real technical interview challenges.</figcaption>
+    </figure>
+
+    <h3>Screen 4: Post-Assessment Skills Diagnostic</h3>
+    <figure>
+      <img src="images/sh-diagnostic.png" alt="Personalized Growth Portal skills diagnostic showing strengths in coding logic and priority areas in aptitude" loading="lazy">
+      <figcaption><em>UX Decision:</em> Replaced generic pass/fail verdicts with an explainable diagnostic breakdown: highlighting strong competence (e.g., Coding Logic at 63.3%) vs priority growth areas (Aptitude at 33.3%) with concrete AI gap commentary.</figcaption>
+    </figure>
+
+    <h3>Screen 5: Recommended 4-Week Action Plan</h3>
+    <figure>
+      <img src="images/sh-roadmap.png" alt="Personalized 4-week action plan roadmap breaking down logical reasoning, STAR method, time management, and executive presence" loading="lazy">
+      <figcaption><em>UX Decision:</em> Synthesizes assessment output into an actionable, weekly step-by-step curriculum (Week 1 Math, Week 2 STAR Framework, Week 3 Time Management, Week 4 Executive Presence) preventing post-interview confusion.</figcaption>
+    </figure>
+
+    <h3>Screen 6: Candidate Feedback &amp; Round Rating System</h3>
+    <figure>
+      <img src="images/sh-feedback.jpg" alt="Candidate feedback and rating module evaluating overall interview and individual round experiences" loading="lazy">
+      <figcaption><em>UX Decision:</em> Structured post-interview survey allowing students to rate each individual round on a 5-star scale and submit qualitative feedback to guide model and question calibrations.</figcaption>
+    </figure>
+  </section>
+
+  <section id="s6">
+    <h2>6. Validation Data &amp; Early User Signals</h2>
+    <p>I tested the working product directly with <b>21 students</b>, <b>3 faculty lecturers</b>, and <b>1 HR professional</b>:</p>
+    <div class="scroll" role="region" aria-label="Validation Signals Table" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>Signal / Metric</th><th>Result</th><th>Product Interpretation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Students who completed full evaluation</td><td><b>21 of 21</b></td><td>High initial task completion; onboarding and flow were intuitive.</td></tr>
+          <tr><td>Returned for repeat practice sessions</td><td><b>7 of 21 (33.3%)</b></td><td>First evidence of organic retention without active push notifications.</td></tr>
+          <tr><td>Repeat users whose score improved</td><td><b>6 of 7 (85.7%)</b></td><td>Directional proof that iterative practice translates into higher readiness.</td></tr>
+          <tr><td>Identified coding as the hardest round</td><td><b>8 of 21 (38.1%)</b></td><td>Highlighted an immediate content difficulty mismatch to resolve.</td></tr>
+          <tr><td>Faculty Assessment (3 Lecturers)</td><td>Approachable &amp; relevant</td><td>Recommended refining database schema to track attempt histories cleanly.</td></tr>
+          <tr><td>HR Assessment (1 Professional)</td><td>High practice utility</td><td>Confirmed strong alignment with campus hiring expectations.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="s7">
+    <h2>7. Two Critical Iterations from User Feedback</h2>
+    <p>Direct user feedback triggered two significant product pivots between v1 and v2:</p>
+    <div class="three">
+      <div>
+        <h3>Iteration 1: Calibrating Coding Difficulty</h3>
+        <p><b>Feedback:</b> 8 of 21 students reported feeling demoralized by the coding difficulty.<br>
+        <b>Action:</b> Shifted questions to a progressive moderate tier with step-by-step logic hints.<br>
+        <b>Outcome:</b> 6 of 7 repeat testers passed on their second attempt with measurable confidence gains.</p>
+      </div>
+      <div>
+        <h3>Iteration 2: Database Schema Redesign</h3>
+        <p><b>Feedback:</b> Lecturers noted that multi-attempt candidate reporting was brittle in SQLite.<br>
+        <b>Action:</b> Normalized the database into relational tables joined by Candidate ID, Question ID, and Attempt Timestamp.<br>
+        <b>Outcome:</b> Enabled accurate attempt-over-attempt delta comparisons and zero data duplication.</p>
+      </div>
+      <div>
+        <h3>Honest PM Nuance</h3>
+        <p><b>Learning:</b> Lowering difficulty improved pass rates, but passing an easier level proves reduced friction—not full interview readiness. A dynamic progressive difficulty tier is required for production.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="s8">
+    <h2>8. Metrics Hierarchy &amp; The Retention Gap</h2>
+    <p>To evaluate Smart Hire AI rigorously, I established a clean metric hierarchy:</p>
+    <ul>
+      <li><b>North Star Metric: Students completing &ge; 2 practice rounds per week.</b></li>
+      <li><b>Secondary Metrics:</b>
+        <ul>
+          <li><b>Score Delta:</b> Average percentage increase from first attempt to latest attempt (achieved +18% across repeat users).</li>
+          <li><b>Question Variation Integrity:</b> Ensuring questions do not repeat across attempts so improvements reflect genuine skill, not memorization.</li>
+        </ul>
+      </li>
+      <li><b>Honest Retention Gap Analysis:</b> While 21 students completed their first test, 14 did not return. My hypothesis is that without automated weekly WhatsApp/email reminder triggers tied to their personalized roadmap, students drop off after their initial curiosity.</li>
+    </ul>
+  </section>
+
+  <section id="s9">
+    <h2>9. AI Quality, Privacy Guardrails &amp; Production Risks</h2>
+    <p>Deploying AI responsibly requires addressing technical and ethical risks upfront:</p>
+    <ul>
+      <li><b>LLM Scoring Consistency:</b> Generative models can vary in grading leniency. <em>Mitigation:</em> Implemented structured JSON prompts with explicit rubric penalties for factual inaccuracies.</li>
+      <li><b>Speech Recognition on Regional Accents:</b> Standard speech APIs struggle with regional Indian English accents. <em>Planned mitigation:</em> Benchmark acoustic models against regional phonetic variations and provide text-input fallbacks.</li>
+      <li><b>Privacy &amp; Compliance (India DPDP Act 2023):</b> Handling student resumes and voice data requires explicit opt-in consent, automated 30-day data purging, and zero PII passed to third-party model training pipelines.</li>
+      <li><b>Unit Economics:</b> Free student access requires managing Gemini API token consumption via response caching and strict input character limits.</li>
+    </ul>
+  </section>
+
+  <section id="s10">
+    <h2>10. Key PM Lessons &amp; Next Steps</h2>
+    <ol>
+      <li><b>Praise tells you what to protect; specific critiques tell you what to build.</b> Student anxiety calibrated the difficulty; lecturer feedback fixed the data architecture.</li>
+      <li><b>One good session is not a habit.</b> Proving product-market fit requires recurring engagement loops, not just positive initial reactions.</li>
+      <li><b>Positioning dictates feature scope.</b> Choosing to be a student practice companion rather than an employer surveillance tool kept the product focused, ethical, and trustworthy.</li>
+    </ol>
+  </section>
+
+  <nav class="pager" aria-label="Project navigation">
+    <a class="next" href="startup-techh.html"><small>Next project</small><b>START_UP (@startup.techh)</b></a>
+  </nav>
+  <p class="back"><a href="index.html">Back to portfolio</a></p>
+
+</div>
+</div>
+</main>
+<dialog id="lb" aria-label="Enlarged screenshot"><button type="button">Close</button><img alt=""></dialog>
+<script src="site.js"></script>
+</body>
+</html>
